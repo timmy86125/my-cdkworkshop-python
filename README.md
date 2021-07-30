@@ -4,28 +4,32 @@ Learning AWS CDK for python
 
 ### Prerequisites
 
-- Set ```aws configure```
-- Install ```pip & virtualenv```
-- Install CDK ```npm install -g aws-cdk```
+- Set AWS Credentials ```aws configure```
 
-  Reference: https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_prerequisites
+- Install Python packages ```pip & virtualenv```
+
+- Install AWS CDK ```npm install -g aws-cdk```
 
 ### CDK Init
 
-```cdk init sample-app --language python```
+- ```cdk init sample-app --language python```
 
-```source .venv/bin/activate```
+- ```source .venv/bin/activate```
 
-```pip install -r requirements.txt```
+- ```pip install -r requirements.txt```
+
+- ```cdk bootstrap --profile aws_profile_name```
 
 ### CDK Deploy
 
-```cdk bootstrap --profile aws_profile_name```
+- ```cdk diff --profile aws_profile_name```
 
-```cdk diff --profile aws_profile_name```
-
-```cdk deploy --profile aws_profile_name```
+- ```cdk deploy --profile aws_profile_name```
 
 ### CDK Destroy
 
-```cdk destroy cdk_stack_name --profile aws_profile_name```
+- ```cdk destroy cdk_stack_name --profile aws_profile_name```
+
+### Reference: 
+- https://cdkworkshop.com/
+- https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html

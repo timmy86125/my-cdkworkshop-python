@@ -1,8 +1,6 @@
 from aws_cdk import (
-    aws_iam as iam,
-    aws_sqs as sqs,
-    aws_sns as sns,
-    aws_sns_subscriptions as subs,
+    aws_lambda,
+    aws_apigateway,
     core
 )
 
@@ -12,13 +10,14 @@ class MyCdkworkshopPythonStack(core.Stack):
     def __init__(self, scope: core.Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        queue = sqs.Queue(
-            self, "MyCdkworkshopPythonQueue",
-            visibility_timeout=core.Duration.seconds(300),
+        my_lambda = aws_lambda.Function(
+            self, 'HelloHandler',
+            runtime=aws_lambda.Runtime.PYTHON_3_7,
+            code=aws_lambda.Code.asset('lambda'),
+            handler='hello.handler',
         )
-
-        topic = sns.Topic(
-            self, "MyCdkworkshopPythonTopic"
+        
+        my_apigateway = aws_apigateway.LambdaRestApi(
+            self, 'Endpoint',
+            handler=my_lambda,
         )
-
-        topic.add_subscription(subs.SqsSubscription(queue))

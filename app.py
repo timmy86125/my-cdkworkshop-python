@@ -6,6 +6,6 @@ from my_cdkworkshop_python.my_cdkworkshop_python_stack import MyCdkworkshopPytho
 
 
 app = core.App()
-MyCdkworkshopPythonStack(app, "my-cdkworkshop-python")
+MyCdkworkshopPythonStack(app, "my-cdkworkshop-python", env={'region': 'us-east-1'}, )
 
 app.synth()
